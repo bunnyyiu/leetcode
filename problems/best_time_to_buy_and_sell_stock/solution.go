@@ -1,11 +1,25 @@
+func min(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}
+
 func maxProfit(prices []int) int {
-    maxEarn := math.SmallestNonzeroFloat64
-    minPrice := math.MaxFloat64
+    maxEarn := math.MinInt32
+    minPrice := math.MaxInt32
     
     for _, price := range(prices) {
-        minPrice = math.Min(minPrice, float64(price))
-        maxEarn = math.Max(maxEarn, float64(float64(price) - minPrice))
+        minPrice = min(minPrice, price)
+        maxEarn = max(maxEarn, price - minPrice)
     }
     
-    return int(maxEarn)
+    return maxEarn
 }
